@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <div className="text-center my-4">
       <div className="navbar w-11/12 mx-auto rounded-lg p-4">
-        {/* Website Logo/Name */}
+      
         <div className="navbar-start flex items-center gap-4">
           <NavLink to="/" className="flex items-center">
             <img
@@ -22,7 +22,7 @@ const Header = () => {
           </NavLink>
         </div>
 
-        {/* Navigation Links */}
+       
         <div className="navbar-center hidden lg:flex gap-6">
           <NavLink to="/" className="hover:text-teal-400">
             Home
