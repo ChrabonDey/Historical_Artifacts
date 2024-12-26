@@ -9,15 +9,15 @@ const LikedArtifacts = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const axiosSecure = useAxiosSecure(); // Custom hook to handle secure API requests
+  const axiosSecure = useAxiosSecure(); 
 
   useEffect(() => {
     if (user?.email) {
-      // Fetching liked artifacts for the authenticated user
+      
       axiosSecure
-        .get("/liked-artifacts") // Send GET request to the protected route
+        .get("/liked-artifacts") 
         .then((res) => {
-          setLikedArtifacts(res.data); // Set liked artifacts
+          setLikedArtifacts(res.data); 
           setLoading(false); // Set loading to false
         })
         .catch((err) => {
