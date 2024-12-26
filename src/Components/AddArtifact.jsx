@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { authContext } from "../AuthProvider/AuthProvider"; // AuthProvider for managing user state
+import { authContext } from "../AuthProvider/AuthProvider"; 
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import useAxiosSecure from "../Hooks/useAxiosSecure"; // Importing custom hook for axios
+import useAxiosSecure from "../Hooks/useAxiosSecure"; 
 
 const AddArtifact = () => {
   const { user } = useContext(authContext); // Retrieve user info from context
