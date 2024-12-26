@@ -12,7 +12,7 @@ import AddArtifact from "../Components/AddArtifact";
 import AllArtifact from "../Components/AllArtifact";
 import LikedArtifacts from "../Components/LikedArtifacts";
 import MyArtifacts from "../Components/MyArtifacts";
-import UpdateArtifact from "../Components/UpdateArtifact"; // Import UpdateArtifact component
+import UpdateArtifact from "../Components/UpdateArtifact"; 
 
 const Router = createBrowserRouter([
   {
@@ -39,7 +39,7 @@ const Router = createBrowserRouter([
             <UpdateArtifact></UpdateArtifact>
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:4000/artifact/${params.id}`), // Fetch artifact details
+        loader: ({ params }) => fetch(`http://localhost:4000/artifact/${params.id}`), 
       },
       {
         path: "/add-artifact",
