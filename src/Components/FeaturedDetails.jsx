@@ -15,7 +15,7 @@ const FeaturedDetails = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:4000/artifact/${feature._id}/like`, {
+      const response = await fetch(`https://historical-artifacts-tracker-server-umber.vercel.app/artifact/${feature._id}/like`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

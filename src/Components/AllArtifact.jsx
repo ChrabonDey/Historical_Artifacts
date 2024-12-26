@@ -9,7 +9,7 @@ const AllArtifact = () => {
   const fetchArtifacts = async (query = "") => {
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:4000/history${query}`);
+      const response = await fetch(`https://historical-artifacts-tracker-server-umber.vercel.app/history${query}`);
       if (!response.ok) {
         throw new Error("Failed to fetch artifacts");
       }

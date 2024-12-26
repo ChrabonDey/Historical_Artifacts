@@ -4,7 +4,7 @@ import { authContext } from '../AuthProvider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 
 const axiosInstance=axios.create({
-    baseURL:'http://localhost:4000',
+    baseURL:'https://historical-artifacts-tracker-server-umber.vercel.app',
     withCredentials:true
 });
 

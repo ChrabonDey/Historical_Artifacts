@@ -8,7 +8,7 @@ const Featured = () => {
 
   useEffect(() => {
     
-    fetch(`http://localhost:4000/history${user ? `?email=${user.email}` : ''}`)
+    fetch(`https://historical-artifacts-tracker-server-umber.vercel.app/history${user ? `?email=${user.email}` : ''}`)
       .then((res) => res.json())
       .then((data) => {
         const sortedArtifacts = data.sort((a, b) => b.likeCount - a.likeCount).slice(0, 6);
@@ -22,7 +22,7 @@ const Featured = () => {
       return;
     }
 
-    fetch(`http://localhost:4000/artifact/${id}/like`, {
+    fetch(`https://historical-artifacts-tracker-server-umber.vercel.app/artifact/${id}/like`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: user.email }),

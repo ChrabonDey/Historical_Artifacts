@@ -30,7 +30,7 @@ const Router = createBrowserRouter([
             <FeaturedDetails></FeaturedDetails>
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:4000/artifact/${params.id}`),
+        loader: ({ params }) => fetch(`https://historical-artifacts-tracker-server-umber.vercel.app/artifact/${params.id}`),
       },
       {
         path: "/update-artifact/:id",
@@ -39,7 +39,7 @@ const Router = createBrowserRouter([
             <UpdateArtifact></UpdateArtifact>
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:4000/artifact/${params.id}`), 
+        loader: ({ params }) => fetch(`https://historical-artifacts-tracker-server-umber.vercel.app/artifact/${params.id}`), 
       },
       {
         path: "/add-artifact",

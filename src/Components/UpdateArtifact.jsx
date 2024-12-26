@@ -34,7 +34,7 @@ const UpdateArtifact = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:4000/artifact/${artifact._id}`, {
+      const response = await fetch(`https://historical-artifacts-tracker-server-umber.vercel.app/artifact/${artifact._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
