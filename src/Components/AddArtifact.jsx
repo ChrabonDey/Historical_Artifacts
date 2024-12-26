@@ -41,7 +41,7 @@ const AddArtifact = () => {
       likedBy: [], 
     };
 
-    // Send data to the server using axios with secure instance and withCredentials
+    
     axiosSecure
       .post("/history", artifact, { withCredentials: true }) // Added withCredentials to ensure secure session
       .then((data) => {
