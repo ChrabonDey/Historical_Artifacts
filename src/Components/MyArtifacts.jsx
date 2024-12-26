@@ -51,7 +51,7 @@ const MyArtifacts = () => {
   };
 
   if (loading) {
-    return <p>Loading...</p>;  // Display loading text while fetching data
+    return <p>Loading...</p>;  
   }
 
   return (
