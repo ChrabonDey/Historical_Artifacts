@@ -23,7 +23,7 @@ const AddArtifact = () => {
     const discoveredBy = form.discoveredBy.value;
     const location = form.location.value;
 
-    // Create artifact object
+   
     const artifact = {
       name,
       image,
@@ -34,11 +34,11 @@ const AddArtifact = () => {
       discoveredBy,
       location,
       addedBy: {
-        name: user?.displayName || "Anonymous", // Use displayName for better readability
+        name: user?.displayName || "Anonymous", 
         email: user?.email || "unknown",
       },
       likeCount: 0,
-      likedBy: [], // Initially empty
+      likedBy: [], 
     };
 
     // Send data to the server using axios with secure instance and withCredentials
