@@ -44,10 +44,10 @@ const HistoryTrackerSections = () => {
             </button>
           </div>
 
-          {/* Right Content */}
+          
           <div className="relative">
             <div className="relative">
-              {/* Lottie Animation */}
+              
               <Lottie animationData={Animation} loop={true} className="max-w-md mx-auto" />
               <h3 className="text-2xl font-bold text-center mt-6">
                 Discover Timeless Treasures
