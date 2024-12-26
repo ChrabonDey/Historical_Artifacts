@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../Hooks/useAxiosSecure"; 
 
 const AddArtifact = () => {
-  const { user } = useContext(authContext); // Retrieve user info from context
+  const { user } = useContext(authContext);
   const navigate = useNavigate();
-  const axiosSecure = useAxiosSecure(); // Get the secure axios instance
+  const axiosSecure = useAxiosSecure(); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
