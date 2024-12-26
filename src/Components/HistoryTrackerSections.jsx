@@ -20,10 +20,10 @@ const HistoryTrackerSections = () => {
 
   return (
     <div>
-      {/* Section 1 */}
+  
       <section className="text-black py-16">
         <div className="container mx-auto px-6 lg:px-20 grid lg:grid-cols-2 items-center gap-12">
-          {/* Left Content */}
+          
           <div>
             <h2 className="text-4xl font-bold mb-4">About Historical Tracker</h2>
             <p className="text-lg leading-relaxed mb-6">
