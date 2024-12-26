@@ -42,7 +42,7 @@ const Footer = () => {
                             </div>
                         </div>
 
-                        {/* Newsletter Subscription Section */}
+                        
                         <div className="md:col-span-3 mt-8">
                             <h4 className="text-xl font-bold text-white mb-4 text-center">Stay Updated</h4>
                             <form className="flex flex-col items-center">
