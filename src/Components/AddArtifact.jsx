@@ -13,7 +13,7 @@ const AddArtifact = () => {
     e.preventDefault();
     const form = e.target;
 
-    // Collect form data
+    
     const name = form.name.value;
     const image = form.image.value;
     const type = form.type.value;
