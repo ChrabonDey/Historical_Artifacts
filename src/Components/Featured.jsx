@@ -7,14 +7,13 @@ const Featured = () => {
   const { user } = useContext(authContext); // Access the logged-in user
 
   useEffect(() => {
-    if (user?.email) {
-      fetch(`http://localhost:4000/history?email=${user.email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          const sortedArtifacts = data.sort((a, b) => b.likeCount - a.likeCount).slice(0, 6);
-          setTracker(sortedArtifacts);
-        });
-    }
+    
+    fetch(`http://localhost:4000/history${user ? `?email=${user.email}` : ''}`)
+      .then((res) => res.json())
+      .then((data) => {
+        const sortedArtifacts = data.sort((a, b) => b.likeCount - a.likeCount).slice(0, 6);
+        setTracker(sortedArtifacts);
+      });
   }, [user]);
 
   const handleLike = (id) => {
@@ -53,9 +52,15 @@ const Featured = () => {
               <p>{artifact.description}</p>
               <div className="flex justify-between items-center mt-4">
                 <span className="text-lg font-semibold">❤️ {artifact.likeCount}</span>
-                <button onClick={() => handleLike(artifact._id)} className="btn btn-primary">
-                  Like
-                </button>
+                {user ? (
+                  <button onClick={() => handleLike(artifact._id)} className="btn btn-primary">
+                    Like
+                  </button>
+                ) : (
+                  <button className="btn btn-primary" disabled>
+                    Like
+                  </button>
+                )}
                 <Link to={`/artifact/${artifact._id}`}>
                   <button className="btn btn-secondary">View Details</button>
                 </Link>
