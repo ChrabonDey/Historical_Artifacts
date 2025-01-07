@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { authContext } from "../AuthProvider/AuthProvider";
+import "../App.css";
 
 const Featured = () => {
   const [tracker, setTracker] = useState([]);
   const { user } = useContext(authContext); // Access the logged-in user
 
   useEffect(() => {
-    
     fetch(`https://historical-artifacts-tracker-server-umber.vercel.app/history${user ? `?email=${user.email}` : ''}`)
       .then((res) => res.json())
       .then((data) => {
@@ -40,29 +40,53 @@ const Featured = () => {
 
   return (
     <div className="container mx-auto py-10">
-      <h2 className="text-3xl font-bold text-center mb-6">Featured Artifacts</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <h2 className="text-5xl text-white font-bold text-center my-14 dm-serif-text-regular opacity-80">Featured Artifacts</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {tracker.map((artifact) => (
-          <div key={artifact._id} className="card bg-base-100 shadow-xl">
-            <figure>
-              <img src={artifact.image} alt={artifact.name} className="h-48 w-full object-cover" />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">{artifact.name}</h2>
-              <p>{artifact.description}</p>
+          <div
+            key={artifact._id}
+            className="max-w-sm bg-[#252930] rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transition-transform transition-ease-in-out transform hover:scale-105 hover:shadow-md hover:shadow-gray-500/50"
+            style={{ height: '400px' }} // Reduced height for card
+          >
+            <Link to={`/artifact/${artifact._id}`} className="group">
+              <img
+                className="rounded-t-lg w-full h-36 object-cover transition-all" // Reduced height for the image
+                src={artifact.image}
+                alt={artifact.name}
+              />
+            </Link>
+            <div className="p-4"> {/* Reduced padding here */}
+              <Link to={`/artifact/${artifact._id}`}>
+                <h5 className="mb-2 text-2xl font-semibold dm-serif-text-regular text-white opacity-80 hover:text-yellow-500 transition-all">
+                  {artifact.name}
+                </h5>
+              </Link>
+              <p className="mb-3 font-light text-white text-opacity-40">
+                {artifact.description && artifact.description.length > 0
+                  ? artifact.description.slice(0, 100) + "..."
+                  : "No description available"}
+              </p>
               <div className="flex justify-between items-center mt-4">
-                <span className="text-lg font-semibold">❤️ {artifact.likeCount}</span>
+                <span className="text-xl font-semibold dm-serif-text-regular">❤️ {artifact.likeCount}</span>
                 {user ? (
-                  <button onClick={() => handleLike(artifact._id)} className="btn btn-primary">
+                  <button
+                    onClick={() => handleLike(artifact._id)}
+                    className="px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-yellow-400 to-yellow-700 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 transition-all"
+                  >
                     Like
                   </button>
                 ) : (
-                  <button className="btn btn-primary" disabled>
+                  <button
+                    className="px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-yellow-400 to-yellow-700 rounded-lg opacity-50 cursor-not-allowed"
+                    disabled
+                  >
                     Like
                   </button>
                 )}
                 <Link to={`/artifact/${artifact._id}`}>
-                  <button className="btn btn-secondary">View Details</button>
+                  <button className="px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-yellow-400 to-yellow-700 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 transition-all">
+                    See More
+                  </button>
                 </Link>
               </div>
             </div>

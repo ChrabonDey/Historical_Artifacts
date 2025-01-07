@@ -8,8 +8,8 @@ const Header = () => {
   const { user, handleLogout } = useContext(authContext);
 
   return (
-    <div className="text-center my-4">
-      <div className="navbar w-11/12 mx-auto rounded-lg p-4">
+    <div className="text-center  ">
+      <div className="navbar  mx-auto  p-4  bg-[#252930] bg-opacity-80">
       
         <div className="navbar-start flex items-center gap-4">
           <NavLink to="/" className="flex items-center">
@@ -18,30 +18,35 @@ const Header = () => {
               alt="Website Logo"
               className="w-10 h-10 object-contain"
             />
-            <span className="text-xl font-bold ml-2">Historical Tracker</span>
+            <span className="text-xl flex flex-col font-bold ml-2 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700">
+              <div>Historical</div>
+               <div>Tracker</div>
+               </span>
           </NavLink>
         </div>
 
        
         <div className="navbar-center hidden lg:flex gap-6">
-          <NavLink to="/" className="hover:text-teal-400">
+          <NavLink to="/" className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700">
             Home
           </NavLink>
-          <NavLink to="/all-artifacts" className="hover:text-teal-400">
+          <NavLink to="/all-artifacts" className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700">
             All Artifacts
           </NavLink>
-          {user && (
-            <NavLink to="/add-artifact" className="hover:text-teal-400">
+         
+            <NavLink to="/add-artifact" className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700">
               Add Artifacts
             </NavLink>
-          )}
+            <a href="#about" className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700">
+              About
+            </a>
         </div>
 
         {/* Login/Logout Section */}
         <div className="navbar-end flex items-center gap-4">
           {!user ? (
             <NavLink to="/login">
-              <button className="btn bg-gradient-to-r from-teal-400 to-cyan-500 text-white px-6 py-2 rounded-md">
+              <button className="btn bg-gradient-to-r from-yellow-400 to-yellow-700 text-white px-10 py-2 rounded-full border-none">
                 Login
               </button>
             </NavLink>
@@ -64,14 +69,14 @@ const Header = () => {
                 className="dropdown-content menu bg-white text-black rounded-md w-40 shadow-md mt-2 z-50"
               >
                 <li>
-                  <NavLink to="/my-artifacts" className="hover:text-blue-600">
+                  <NavLink to="/my-artifacts" className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700">
                     My Artifacts
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
                     to="/liked-artifacts"
-                    className="hover:text-blue-600"
+                    className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700"
                   >
                     Liked Artifacts
                   </NavLink>

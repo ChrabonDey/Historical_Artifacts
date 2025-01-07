@@ -50,3 +50,44 @@
   position: absolute;
   z-index: 50; 
 }
+/* Gold Gradient */
+.gold-gradient {
+  background: linear-gradient(to right, #d4af37, #f0c950); /* Adjust gradient colors as needed */
+  border-radius: 25px;
+  width: 100px; /* Example size */
+  height: 50px;
+}
+
+/* Dark Color */
+.dark-color {
+  background-color: #252930;
+  border-radius: 25px;
+  width: 100px; /* Example size */
+  height: 50px;
+}
+.dm-serif-text-regular {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.inter {
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+/* Gray Color */
+.gray-color {
+  background-color: #575B62;
+  border-radius: 25px;
+  width: 100px; /* Example size */
+  height: 50px;
+}
+
+/* Light Color */
+.light-color {
+  background-color: #EFE9E3;
+  border-radius: 25px;
+  width: 100px; /* Example size */
+  height: 50px;
+}

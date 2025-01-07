@@ -21,7 +21,7 @@ const HistoryTrackerSections = () => {
   return (
     <div>
   
-      <section className="text-black py-16">
+      <section id="about" className="text-black py-16">
         <div className="container mx-auto px-6 lg:px-20 grid lg:grid-cols-2 items-center gap-12">
           
           <div>
