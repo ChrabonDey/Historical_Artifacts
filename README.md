@@ -19,8 +19,7 @@ This project demonstrates:
 
 ## Live URL
 
-[Visit the Live Website](#) (Replace `#` with the actual live URL once deployed)
-
+[Visit the Live Website](`https://historical-artifacts-f4424.web.app/`)
 ---
 
 ## Key Features
@@ -147,9 +146,7 @@ This project demonstrates:
 ## Submission Checklist
 
 1. **Live Site Link**: Add the live site link.
-2. **GitHub Repositories**:
-   - [Frontend Repository](#) (Replace `#` with the repository link)
-   - [Backend Repository](#)
+
 
 3. **Testing**:
    - Verify all routes, private pages, and functionality.
