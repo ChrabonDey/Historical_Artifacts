@@ -1,19 +1,20 @@
 import React, { useContext } from "react";
-import { authContext } from "../AuthProvider/AuthProvider"; 
+import { authContext } from "../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import useAxiosSecure from "../Hooks/useAxiosSecure"; 
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import img1 from "../assets/Historical Artifacts Tracker moskot (1).jpg";
+import image3 from "../assets/Historical Artifacts Tracker moskot (2).jpg";
 
 const AddArtifact = () => {
   const { user } = useContext(authContext);
   const navigate = useNavigate();
-  const axiosSecure = useAxiosSecure(); 
+  const axiosSecure = useAxiosSecure();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
 
-    
     const name = form.name.value;
     const image = form.image.value;
     const type = form.type.value;
@@ -23,7 +24,6 @@ const AddArtifact = () => {
     const discoveredBy = form.discoveredBy.value;
     const location = form.location.value;
 
-   
     const artifact = {
       name,
       image,
@@ -34,16 +34,15 @@ const AddArtifact = () => {
       discoveredBy,
       location,
       addedBy: {
-        name: user?.displayName || "Anonymous", 
+        name: user?.displayName || "Anonymous",
         email: user?.email || "unknown",
       },
       likeCount: 0,
-      likedBy: [], 
+      likedBy: [],
     };
 
-    
     axiosSecure
-      .post("/history", artifact, { withCredentials: true }) // Added withCredentials to ensure secure session
+      .post("/history", artifact, { withCredentials: true })
       .then((data) => {
         if (data.data.insertedId) {
           Swal.fire({
@@ -53,7 +52,7 @@ const AddArtifact = () => {
             confirmButtonText: "Cool",
           });
           form.reset();
-          navigate("/"); // Redirect to the home page after successful submission
+          navigate("/");
         } else {
           throw new Error("Failed to add artifact");
         }
@@ -70,36 +69,53 @@ const AddArtifact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex justify-center items-center">
-      <div className="w-full max-w-3xl bg-white shadow-lg rounded-lg p-8">
-        <h2 className="text-2xl font-bold mb-6 text-blue-600">Add Artifact</h2>
+    <div className="min-h-screen flex flex-col lg:flex-row items-center gap-12 bg-[#252930] text-white">
+      {/* Images Section */}
+      <div className="flex  justify-center items-center lg:w-1/2">
+       
+          <img
+            src={image3}
+            alt="Artifact Image 1"
+            className="w-96 h-screen object-cover rounded-full border-l-2 border-gray-700  p-5"
+          />
+         
+        
+      </div>
+
+      {/* Form Section */}
+      <div className="lg:w-1/2 w-full px-8 py-6 bg-[#2f343d] rounded-lg shadow-lg">
+        <h2 className="text-3xl font-bold mb-8 text-center">Add Artifact</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Artifact Name */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Artifact Name</label>
+            <label className="block text-sm font-medium mb-2">Artifact Name</label>
             <input
               type="text"
               name="name"
               placeholder="Enter artifact name"
-              className="input input-bordered w-full mt-2"
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
           {/* Artifact Image */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Artifact Image (URL)</label>
+            <label className="block text-sm font-medium mb-2">Artifact Image (URL)</label>
             <input
               type="url"
               name="image"
               placeholder="Enter image URL"
-              className="input input-bordered w-full mt-2"
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
           {/* Artifact Type */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Artifact Type</label>
-            <select name="type" className="select select-bordered w-full mt-2" required>
+            <label className="block text-sm font-medium mb-2">Artifact Type</label>
+            <select
+              name="type"
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            >
               <option value="Tools">Tools</option>
               <option value="Weapons">Weapons</option>
               <option value="Documents">Documents</option>
@@ -108,79 +124,83 @@ const AddArtifact = () => {
           </div>
           {/* Description */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Historical Context</label>
+            <label className="block text-sm font-medium mb-2">Historical Context</label>
             <textarea
               name="description"
               placeholder="Enter historical context"
-              className="textarea textarea-bordered w-full mt-2"
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             ></textarea>
           </div>
           {/* Created At */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Created At</label>
+            <label className="block text-sm font-medium mb-2">Created At</label>
             <input
               type="text"
               name="createdAt"
               placeholder="e.g., 100 BC"
-              className="input input-bordered w-full mt-2"
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
           {/* Discovered At */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Discovered At</label>
+            <label className="block text-sm font-medium mb-2">Discovered At</label>
             <input
               type="text"
               name="discoveredAt"
               placeholder="e.g., 1799"
-              className="input input-bordered w-full mt-2"
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
           {/* Discovered By */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Discovered By</label>
+            <label className="block text-sm font-medium mb-2">Discovered By</label>
             <input
               type="text"
               name="discoveredBy"
               placeholder="Enter discoverer's name"
-              className="input input-bordered w-full mt-2"
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
           {/* Location */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Present Location</label>
+            <label className="block text-sm font-medium mb-2">Present Location</label>
             <input
               type="text"
               name="location"
               placeholder="Enter location"
-              className="input input-bordered w-full mt-2"
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
-          {/* User Info (Read-Only) */}
+          {/* Added By */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Added By</label>
+            <label className="block text-sm font-medium mb-2">Added By</label>
             <input
               type="text"
               value={user?.displayName || "Anonymous"}
-              className="input input-bordered w-full mt-2"
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded focus:outline-none"
               readOnly
             />
           </div>
+          {/* Email */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <label className="block text-sm font-medium mb-2">Email</label>
             <input
               type="email"
               value={user?.email || "unknown"}
-              className="input input-bordered w-full mt-2"
+              className="w-full p-3 bg-gray-900 border border-gray-600 rounded focus:outline-none"
               readOnly
             />
           </div>
           {/* Submit Button */}
-          <button type="submit" className="btn btn-primary w-full">
+          <button
+            type="submit"
+            className="w-full p-3 bg-blue-600 hover:bg-blue-700 rounded text-white font-semibold transition focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
             Add Artifact
           </button>
         </form>

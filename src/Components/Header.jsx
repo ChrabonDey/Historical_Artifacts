@@ -8,9 +8,8 @@ const Header = () => {
   const { user, handleLogout } = useContext(authContext);
 
   return (
-    <div className="text-center  ">
-      <div className="navbar  mx-auto  p-4  bg-[#252930] bg-opacity-80">
-      
+    <div className="text-center">
+      <div className="navbar mx-auto p-4 bg-[#252930] bg-opacity-80">
         <div className="navbar-start flex items-center gap-4">
           <NavLink to="/" className="flex items-center">
             <img
@@ -20,26 +19,73 @@ const Header = () => {
             />
             <span className="text-xl flex flex-col font-bold ml-2 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700">
               <div>Historical</div>
-               <div>Tracker</div>
-               </span>
+              <div>Tracker</div>
+            </span>
           </NavLink>
         </div>
 
-       
         <div className="navbar-center hidden lg:flex gap-6">
-          <NavLink to="/" className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700">
+          <NavLink
+            to="/"
+            className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700"
+          >
             Home
           </NavLink>
-          <NavLink to="/all-artifacts" className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700">
+          <NavLink
+            to="/all-artifacts"
+            className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700"
+          >
             All Artifacts
           </NavLink>
-         
-            <NavLink to="/add-artifact" className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700">
+
+          {user && (
+            <NavLink
+              to="/add-artifact"
+              className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700"
+            >
               Add Artifacts
             </NavLink>
-            <a href="#about" className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700">
-              About
-            </a>
+          )}
+          {user && (
+            <NavLink
+               to="/my-artifacts"
+              className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700"
+            >
+               My Artifacts
+            </NavLink>
+          )}
+          {user && (
+            <NavLink
+               to="/liked-artifacts"
+              className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700"
+            >
+               Liked Artifacts
+            </NavLink>
+          )}
+        
+
+          <a
+            href="#about"
+            className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700"
+          >
+            About
+          </a>
+          <NavLink
+            to="/contact"
+            className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700"
+          >
+            Contact
+          </NavLink>
+          {user && (
+            <button
+            onClick={async () => {
+              await handleLogout();
+            }}
+            className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700"
+          >
+            Logout
+          </button>
+          )}
         </div>
 
         {/* Login/Logout Section */}
@@ -63,13 +109,17 @@ const Header = () => {
                   <img src={user.photoURL} alt="User Avatar" />
                 </div>
               </div>
+
               {/* Dropdown Menu */}
               <ul
                 tabIndex={0}
                 className="dropdown-content menu bg-white text-black rounded-md w-40 shadow-md mt-2 z-50"
               >
                 <li>
-                  <NavLink to="/my-artifacts" className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700">
+                  <NavLink
+                    to="/my-artifacts"
+                    className="hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-700"
+                  >
                     My Artifacts
                   </NavLink>
                 </li>

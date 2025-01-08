@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomeLayout from "../Layouts/HomeLayout";
 
-import Login from "../components/Login";
+import Login from "../Components/Login";
 import Register from "../components/Register";
 import PrivateRoute from "../components/PrivateRoute";
 
@@ -13,6 +13,7 @@ import AllArtifact from "../Components/AllArtifact";
 import LikedArtifacts from "../Components/LikedArtifacts";
 import MyArtifacts from "../Components/MyArtifacts";
 import UpdateArtifact from "../Components/UpdateArtifact"; 
+import Contact from "../Components/Contact";
 
 const Router = createBrowserRouter([
   {
@@ -74,6 +75,10 @@ const Router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
       },
     ],
   },

@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { authContext } from "../AuthProvider/AuthProvider";
+import "../App.css"
+
 
 const FeaturedDetails = () => {
   const feature = useLoaderData(); // Load artifact details
@@ -38,8 +40,8 @@ const FeaturedDetails = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
-      <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">{feature.name}</h1>
+    <div className="max-w-4xl flex gap-14 mx-auto p-6  shadow-lg rounded-lg mt-10">
+      
       <div className="relative">
         <img
           src={feature.image}
@@ -47,8 +49,11 @@ const FeaturedDetails = () => {
           className="w-full h-96 object-cover rounded-lg shadow-md"
         />
       </div>
-      <p className="text-lg text-gray-600 mt-4">{feature.description}</p>
-      <div className="flex items-center justify-between mt-6">
+    
+      <div className=" mt-6 dm-serif-text-regular flex-1 justify-start ">
+      <h1 className="text-4xl font-light text-white text-opacity-80 text-start  leading-relaxed mb-6">{feature.name}</h1>
+      <p className="text-lg text-white mt-2 text-start mb-7 opacity-70">{feature.description}</p>
+        <div className="flex justify-between items-center">
         <button
           className={`px-6 py-2 font-semibold rounded-lg transition ${
             liked ? "bg-red-500 text-white" : "bg-blue-500 text-white"
@@ -57,7 +62,8 @@ const FeaturedDetails = () => {
         >
           {liked ? "Dislike" : "Like"}
         </button>
-        <span className="text-lg text-gray-700">{likeCount} Likes</span>
+        <span className="text-lg text-white opacity-80">{likeCount} Likes</span>
+        </div>
       </div>
     </div>
   );

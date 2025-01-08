@@ -13,19 +13,18 @@ const MyArtifacts = () => {
 
   useEffect(() => {
     if (user?.email) {
-      // Fetching the user's artifacts with the secure axios instance
       axiosSecure
         .get(`/my-artifacts?email=${user.email}`)
         .then((res) => {
-          setMyArtifacts(res.data);  // Set the artifacts data
-          setLoading(false);  // Set loading to false when data is received
+          setMyArtifacts(res.data);
+          setLoading(false);
         })
         .catch((err) => {
           console.error(err);
-          setLoading(false);  // Set loading to false even if there's an error
+          setLoading(false);
         });
     }
-  }, [user, axiosSecure]);  // Added axiosSecure to the dependency array
+  }, [user, axiosSecure]);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -37,9 +36,9 @@ const MyArtifacts = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure
-          .delete(`/artifact/${id}`)  // Using axiosSecure for delete request
+          .delete(`/artifact/${id}`)
           .then(() => {
-            setMyArtifacts((prev) => prev.filter((artifact) => artifact._id !== id));  // Update state after deletion
+            setMyArtifacts((prev) => prev.filter((artifact) => artifact._id !== id));
             Swal.fire("Deleted!", "Your artifact has been deleted.", "success");
           })
           .catch((err) => {
@@ -51,36 +50,56 @@ const MyArtifacts = () => {
   };
 
   if (loading) {
-    return <p>Loading...</p>;  
+    return <p>Loading...</p>;
   }
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="container mx-auto py-10 px-4">
       <h2 className="text-3xl font-bold text-center mb-6">My Artifacts</h2>
       {myArtifacts.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {myArtifacts.map((artifact) => (
-            <div key={artifact._id} className="card bg-base-100 shadow-xl">
-              <figure>
-                <img src={artifact.image} alt={artifact.name} className="h-48 w-full object-cover" />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">{artifact.name}</h2>
-                <p>{artifact.description}</p>
-                <div className="flex justify-between items-center mt-4">
-                  <button onClick={() => handleDelete(artifact._id)} className="btn btn-error">
-                    Delete
-                  </button>
-                  <button
-                    onClick={() => navigate(`/update-artifact/${artifact._id}`)}
-                    className="btn btn-warning"
-                  >
-                    Update
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className="overflow-x-auto">
+          <table className="table-auto w-full text-gray-200 bg-[#252930]">
+            <thead>
+              <tr className="text-left bg-gray-700 text-gray-400">
+                <th className="px-4 py-3 text-center">Image</th>
+                <th className="px-4 py-3 text-center">Name</th>
+                <th className="px-4 py-3 text-center">Description</th>
+                <th className="px-4 py-3 text-center">Update</th>
+                <th className="px-4 py-3 text-center">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {myArtifacts.map((artifact) => (
+                <tr key={artifact._id} className="border-b border-gray-700">
+                  <td className="px-4 py-3 text-center">
+                    <img
+                      src={artifact.image}
+                      alt={artifact.name}
+                      className="w-16 h-16 object-cover  rounded-full"
+                    />
+                  </td>
+                  <td className="px-4 py-3 text-white">{artifact.name}</td>
+                  <td className="px-4 py-3 text-gray-300">{artifact.description}</td>
+                  <td className="px-4 py-3 text-center">
+                    <button
+                      onClick={() => navigate(`/update-artifact/${artifact._id}`)}
+                      className="bg-gradient-to-r from-yellow-400 to-yellow-700 text-white px-10 py-2 rounded-full border-none"
+                    >
+                      Update
+                    </button>
+                  </td>
+                  <td className="px-4 py-3 text-center">
+                    <button
+                      onClick={() => handleDelete(artifact._id)}
+                      className="bg-gradient-to-r from-red-400 to-red-700 text-white px-10 py-2 rounded-full border-none"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       ) : (
         <p className="text-center text-lg text-gray-500">No artifacts added yet.</p>

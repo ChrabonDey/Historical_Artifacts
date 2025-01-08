@@ -71,20 +71,20 @@ const Featured = () => {
                 {user ? (
                   <button
                     onClick={() => handleLike(artifact._id)}
-                    className="px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-yellow-400 to-yellow-700 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 transition-all"
+                    className="px-3 py-2 text-sm font-medium text-center text-white border-2 border-yellow-500 hover:bg-gradient-to-r from-yellow-400 to-yellow-700 rounded-lg hover:bg-yellow-800 hover:border-none focus:ring-4 focus:outline-none focus:ring-yellow-300 transition-all"
                   >
-                    Like
+                    Like This
                   </button>
                 ) : (
                   <button
-                    className="px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-yellow-400 to-yellow-700 rounded-lg opacity-50 cursor-not-allowed"
+                    className="px-3 py-2 text-sm font-medium text-center text-white border-2  border-yellow-500 hover:bg-gradient-to-r from-yellow-400 to-yellow-700 rounded-lg opacity-50 hover:border-none cursor-not-allowed"
                     disabled
                   >
-                    Like
+                    Like This
                   </button>
                 )}
                 <Link to={`/artifact/${artifact._id}`}>
-                  <button className="px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-yellow-400 to-yellow-700 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 transition-all">
+                  <button className="px-3 py-2 text-sm font-medium text-center text-white border-2  border-yellow-500 hover:bg-gradient-to-r from-yellow-400 to-yellow-700 rounded-lg hover:bg-yellow-800 hover:border-none focus:ring-4 focus:outline-none focus:ring-yellow-300 transition-all">
                     See More
                   </button>
                 </Link>
